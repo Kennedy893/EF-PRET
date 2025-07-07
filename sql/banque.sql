@@ -9,7 +9,7 @@ CREATE TABLE etablissement(
 
 CREATE TABLE financement(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    valeur DECIMAL(15, 2) NOT NULL,
+    fonds DECIMAL(15, 2) NOT NULL,
     id_etablissement INTEGER,
     descri TEXT,
     date_financement DATE NOT NULL,
@@ -41,6 +41,27 @@ CREATE TABLE compte(
     date_creation DATE NOT NULL DEFAULT CURRENT_DATE,
     FOREIGN KEY (id_client) REFERENCES client(id)
 );
+
+CREATE TABLE statut(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    designation VARCHAR(50)
+);
+
+CREATE TABLE mouvement_compte(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id_compte INTEGER NOT NULL,
+    montant DECIMAL(15, 2) NOT NULL,
+    FOREIGN KEY (id_compte) REFERENCES compte(id)
+);
+
+CREATE TABLE statut_mouvement_compte(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id_mouvement_compte INTEGER NOT NULL,
+    id_statut INTEGER NOT NULL,
+    date_debut DATE NOT NULL,
+    FOREIGN KEY (id_statut) REFERENCES statut(id),
+    FOREIGN KEY (id_mouvement_compte) REFERENCES mouvement_compte(id)
+)
 
 CREATE TABLE historique_compte(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -81,10 +102,6 @@ CREATE TABLE pret(
     FOREIGN KEY (id_compte) REFERENCES compte (id)
 );
 
-CREATE TABLE statut(
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    designation VARCHAR(50)
-);
 
 CREATE TABLE statut_pret(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,

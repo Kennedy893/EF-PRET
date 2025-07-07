@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS banque_simple;
 CREATE DATABASE banque_simple CHARACTER SET utf8mb4;
 USE banque_simple;
 
@@ -26,6 +27,7 @@ CREATE TABLE pret(
     id_type_pret INT,
     montant DECIMAL(15, 2) NOT NULL,
     date_pret DATE,
+    duree INT NOT NULL, -- mois
     FOREIGN KEY (id_client) REFERENCES client(id_client),
     FOREIGN KEY (id_etablissement) REFERENCES etablissement_financier(id_etablissement),
     FOREIGN KEY (id_type_pret) REFERENCES type_pret(id_type_pret)

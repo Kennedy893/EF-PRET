@@ -1,7 +1,7 @@
 <?php
 function getDB() {
     $host = 'localhost';
-    $dbname = 'banque';
+    $dbname = 'banque_simple';
     $username = 'root';
     $password = '';
 

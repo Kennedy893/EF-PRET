@@ -92,7 +92,7 @@ CREATE TABLE pret(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_type INTEGER NOT NULL,
     id_type_remboursement INTEGER NOT NULL,
-    frequence INT NOT NULL, 
+    frequence INT NOT NULL DEFAULT 12, 
     duree INT NOT NULL,     
     id_compte INTEGER,
     date_pret DATE NOT NULL DEFAULT CURRENT_DATE,

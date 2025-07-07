@@ -1,5 +1,5 @@
-CREATE DATABASE banque CHARACTER SET utf8mb4;
-USE banque;
+CREATE DATABASE banque_simple CHARACTER SET utf8mb4;
+USE banque_simple;
 
 CREATE TABLE etablissement_financier(
     id_etablissement INT AUTO_INCREMENT PRIMARY KEY,
